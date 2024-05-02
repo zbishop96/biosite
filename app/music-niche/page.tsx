@@ -1,11 +1,11 @@
-import { Link, Button} from "@nextui-org/react";
+import { Link, Button, Image } from "@nextui-org/react";
+import MusicCard from "./MusicCard";
+import WelcomeCard from "./WelcomeCard";
 
-export default function Page() {
-  return <div>
-      <h1>Music Niche</h1>
-      <p>Music Niche will pull your information from Spotify to give insights into your listening habits!</p>
-      <Button as={Link} color="primary" href="#" variant="flat">
-            Log In with Spotify
-      </Button>
-    </div>
+export default function Page({searchParams}: {searchParams: { [key: string]: string | string[] | undefined }}) {
+  if (!searchParams['code']) {
+    return <WelcomeCard />
+  } else {
+    return <div>Authorization code retrieved.</div>
+  }
 }

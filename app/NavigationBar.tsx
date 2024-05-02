@@ -14,12 +14,12 @@ export const NavigationBar = () => (
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="music">
+          <Link color="foreground" href="/music">
             Music
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="music-niche">
+          <Link color="foreground" href="/music-niche">
             Music Niche
           </Link>
         </NavbarItem>
