@@ -1,13 +1,41 @@
 import MusicCard from "../MusicCard";
+import RadialMeter from "../RadialMeter";
 
 export interface spotifySongItem {
     name: string,
-    artists: spotifyArtist[],
-    album: object[]
+    id: string,
+    artists: spotifyArtistItem[],
+    album: spotifyAlbumItem
 }
 
-export interface spotifyArtist {
+export interface spotifyAlbumItem {
+    images: spotifyImageItem[],
     name: string
+}
+
+export interface spotifyImageItem {
+    url: string,
+    height: number,
+    width: number
+}
+
+export interface spotifyArtistItem {
+    id: string,
+    name: string
+}
+
+export interface spotifyTrackFeatures {
+    acousticness: number,
+    danceability: number,
+    duration_ms: number,
+    energy: number,
+    intrumentalness: number,
+    key: number,
+    liveness: number,
+    loudness: number,
+    speechiness: number,
+    tempo: number,
+    valence: number
 }
 
 export default async function Page({searchParams}: {searchParams: { [key: string]: string | string[] | undefined }}) {
@@ -15,12 +43,22 @@ export default async function Page({searchParams}: {searchParams: { [key: string
     const accessToken = await getAccessToken(code as string);
     
     const topSongs = await getTopSongs(accessToken);
+    const analysisAverages = await getSongMetrics(topSongs, accessToken);
     
     return <div className="flex flex-col justify-center items-center">
         <h1 className="text-3xl font-bold tracking-wide text-center my-4"> Your Top Songs</h1>
+        <div className="flex flex-nowrap gap-6">
+            <RadialMeter value={analysisAverages.energy * 100} title="Energy"></RadialMeter>
+            <RadialMeter value={analysisAverages.danceability * 100} title="Danceability"></RadialMeter>
+            <RadialMeter value={analysisAverages.loudness} title="Loudness"></RadialMeter>
+            <RadialMeter value={analysisAverages.valence * 100} title="Valence"></RadialMeter>
+            <RadialMeter value={analysisAverages.acousticness * 100} title="Acousticness"></RadialMeter>
+            <RadialMeter value={analysisAverages.speechiness * 100} title="Speechiness"></RadialMeter>
+            
+        </div>
         <ul className="grid gap-0 grid-cols-4 items-start grid-flow-dense">
             {topSongs.map((songInfo: spotifySongItem) => (
-                <li className="mx-3 my-3"><MusicCard trackName={songInfo.name} artists={songInfo.artists} /></li>
+                <li key={songInfo.id} className="mx-3 my-3"><MusicCard trackName={songInfo.name} artists={songInfo.artists} album={songInfo.album} /></li>
             ))}
         </ul>
     </div>
@@ -64,3 +102,55 @@ async function getTopSongs(accessToken: string) {
     const data = await response.json();
     return data.items;
 }
+
+async function getSongMetrics(songs: spotifySongItem[], accessToken: string) {
+    let duration_ms: number = 0;
+    let energy: number = 0;
+    let intrumentalness: number = 0
+    let key: number = 0
+    let liveness: number = 0
+    let loudness: number = 0
+    let speechiness: number = 0
+    let tempo: number = 0
+    let valence: number = 0
+    let danceability: number = 0
+    let acousticness: number = 0
+
+    await Promise.all(songs.map(async (song) => {
+        const response = await fetch(`https://api.spotify.com/v1/audio-features/${song.id}`, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer ' + `${accessToken}`
+            }
+        })
+
+        const data = await response.json();
+        duration_ms += data.duration_ms;
+        energy += data.energy;
+        intrumentalness += data.intrumentalness
+        key += data.key
+        liveness += data.liveness
+        loudness += data.loudness
+        speechiness += data.speechiness
+        tempo += data.tempo
+        valence += data.valence
+        danceability += data.danceability
+        acousticness += data.acousticness
+    }))
+
+    return {
+        duration_ms: duration_ms / songs.length,
+        energy: energy / songs.length,
+        intrumentalness: intrumentalness / songs.length,
+        key: key / songs.length,
+        liveness: liveness / songs.length,
+        loudness: loudness / songs.length,
+        speechiness: speechiness / songs.length,
+        valence: valence / songs.length,
+        danceability: danceability / songs.length,
+        acousticness: acousticness / songs.length,
+        tempo: tempo / songs.length
+    };
+
+}
+
