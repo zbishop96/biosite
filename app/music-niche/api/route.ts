@@ -1,5 +1,4 @@
 import * as crypto from 'crypto'
-import { Redirect } from 'next';
 import { redirect } from 'next/navigation';
 
 const generateRandomString = (length: number) => {

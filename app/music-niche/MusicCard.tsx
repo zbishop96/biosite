@@ -17,7 +17,7 @@ export default function MusicCard({trackName, artists, album}: {trackName: strin
         <div className="flex-col">
             <h1 className="text-large font-bold line-clamp-1 truncate text-ellipsis">{trackName}</h1>
             <h2 className="text-default-500 line-clamp-1 truncate text-ellipsis">{artists.map(artist => artist.name).join(', ')}</h2>
-            <h2 className="text-default-500">Album Name</h2>
+            <h2 className="text-default-500 line-clamp-1 truncate text-ellipsis">{album.name}</h2>
         </div>
       </CardBody>
     </Card>
