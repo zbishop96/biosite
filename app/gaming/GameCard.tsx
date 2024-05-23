@@ -2,7 +2,7 @@ import { Card, CardHeader, CardBody, Image } from "@nextui-org/react"
 import { steamGamesItem } from "./page"
 
 export default function GameCard({ game }: {game: steamGamesItem}) {
-  return <Card className="shadow">
+  return <Card className="shadow min-w-40">
     <CardHeader className="pb-0 pt-2 px-4 items-start">
     </CardHeader>
     <CardBody className="overflow-visible flex-col gap-4 py-2">

@@ -1,6 +1,6 @@
 import MusicCard from "../MusicCard";
 import RadialMeter from "../RadialMeter";
-import TimeRangeTabs from "../TimeRangeTabs";
+
 export interface spotifySongItem {
     name: string,
     id: string,
@@ -47,7 +47,6 @@ export default async function Page({searchParams}: {searchParams: { [key: string
     const topGenres = await getArtistTopGenres(accessToken);
 
     return <div className="flex flex-col justify-center items-center">
-        <TimeRangeTabs></TimeRangeTabs>
         <h1 className="text-3xl font-bold tracking-wide text-center my-4"> Your Music's Attributes</h1>
         <div className="flex flex-nowrap gap-6">
             <RadialMeter value={analysisAverages.energy * 100} title="Energy"></RadialMeter>
@@ -96,7 +95,7 @@ async function getAccessToken(code: string | undefined) {
     return accessToken
 }
 
-async function getTopSongs(accessToken: string, timeRange: string) {
+export async function getTopSongs(accessToken: string, timeRange: string) {
     const response = await fetch(`https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}`, {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

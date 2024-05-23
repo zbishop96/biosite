@@ -4,7 +4,7 @@ export default async function SteamProfileCard() {
 
   const profileData = await getProfileData()
   console.log(profileData)
-  return <Card className="shadow">
+  return <Card className="shadow max-w-96 min-w-36 mx-3 my-3">
     <CardHeader className="pb-0 pt-2 px-3 items-start">
     </CardHeader>
     <CardBody className="overflow-visible flex-row gap-4 py-3 px-3 items-end">
