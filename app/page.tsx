@@ -42,6 +42,8 @@ export default function Home() {
             </div>
           </div>
 
-      <p className="flex-1 text-large font-sans">Hello! I'm Zach, a Seattle based full stack web developer currently looking for new opportunities. My experience has been primarily in PHP and Typescript development but I am always looking to learn something new. This site acts as a portfolio as well as a way to share my interests. Have a look around!</p>
+      <p className="flex-1 text-large font-sans">Hello! I'm Zach, a Seattle based full stack web developer currently looking for new opportunities.
+       My experience has been primarily in PHP and Typescript development but I am always looking to learn something new. This site acts as a portfolio
+        as well as a way to share my interests. Have a look around!</p>
     </div>
 }

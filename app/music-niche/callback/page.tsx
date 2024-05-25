@@ -1,3 +1,4 @@
+import GenreChips from "../GenreChips";
 import MusicCard from "../MusicCard";
 import RadialMeter from "../RadialMeter";
 
@@ -42,7 +43,7 @@ export default async function Page({searchParams}: {searchParams: { [key: string
     const code = searchParams['code'];
     const accessToken = await getAccessToken(code as string);
     
-    const topSongs = await getTopSongs(accessToken, 'short_term');
+    const topSongs = await getTopSongs(accessToken, 'medium_term');
     const analysisAverages = await getSongMetrics(topSongs, accessToken);
     const topGenres = await getArtistTopGenres(accessToken);
 
@@ -55,6 +56,7 @@ export default async function Page({searchParams}: {searchParams: { [key: string
             <RadialMeter value={analysisAverages.acousticness * 100} title="Acousticness"></RadialMeter>
             <RadialMeter value={analysisAverages.speechiness * 100} title="Speechiness"></RadialMeter>
         </div>
+        <GenreChips genres={topGenres}></GenreChips>
         
         <h1 className="text-3xl font-bold tracking-wide text-center my-4 mt-6"> Your Top Songs</h1>
 
@@ -161,7 +163,7 @@ async function getSongMetrics(songs: spotifySongItem[], accessToken: string) {
 
 async function getArtistTopGenres(accessToken: string) {
     const genreMap = new Map<string, number>()
-    const response = await fetch('https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=50', {
+    const response = await fetch('https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=50', {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': 'Bearer ' + `${accessToken}`
@@ -181,5 +183,5 @@ async function getArtistTopGenres(accessToken: string) {
     });
 
     const genresDescending = new Map(Array.from(genreMap.entries()).sort((a, b) => b[1] - a[1]));
-    return genresDescending.keys();
+    return Array.from(genresDescending.keys()).slice(0,20);
 }
