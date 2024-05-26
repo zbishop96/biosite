@@ -2,7 +2,7 @@ import { Card, CardHeader, CardBody, Image } from "@nextui-org/react"
 import { spotifyArtistItem, spotifyAlbumItem } from "./callback/page"
 
 export default function MusicCard({trackName, artists, album}: {trackName: string, artists: spotifyArtistItem[], album: spotifyAlbumItem}) {
-  return <Card className="max-w-[260px] shadow">
+  return <Card className="max-w-[260px] shadow-lg shadow-slate-800">
     <CardHeader className="pb-0 pt-2 px-4 items-start">
     </CardHeader>
     <CardBody className="overflow-visible flex-col gap-4 py-2">
