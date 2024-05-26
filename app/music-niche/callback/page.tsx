@@ -94,7 +94,7 @@ async function getAccessToken(code: string | undefined) {
     return accessToken
 }
 
-export async function getTopSongs(accessToken: string, timeRange: string) {
+async function getTopSongs(accessToken: string, timeRange: string) {
     const response = await fetch(`https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}&limit=30`, {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -141,7 +141,6 @@ async function getSongMetrics(songs: spotifySongItem[], accessToken: string) {
         acousticness += data.acousticness
     }))
 
-    console.log(`loudness: ${loudness / songs.length}`)
     return {
         duration_ms: duration_ms / songs.length,
         energy: energy / songs.length,

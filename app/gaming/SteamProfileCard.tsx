@@ -3,7 +3,6 @@ import { Card, CardHeader, CardBody, Image } from "@nextui-org/react"
 export default async function SteamProfileCard() {
 
   const profileData = await getProfileData()
-  console.log(profileData)
   return <Card className="shadow max-w-96 min-w-36 mx-3 my-3">
     <CardHeader className="pb-0 pt-2 px-3 items-start">
     </CardHeader>
