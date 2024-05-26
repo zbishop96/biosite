@@ -58,11 +58,7 @@ export default async function Page({searchParams}: {searchParams: { [key: string
         </div>
         <h1 className="text-3xl font-bold tracking-wide text-center my-4 mt-6">Genres from your top artists</h1>
         <GenreChips genres={topGenres}></GenreChips>
-        
         <h1 className="text-3xl font-bold tracking-wide text-center my-4 mt-6">Your Top Songs</h1>
-
-
-
         <ul className="grid gap-0 grid-cols-6 items-start grid-flow-dense">
             {topSongs.map((songInfo: spotifySongItem) => (
                 <li key={songInfo.id} className="mx-3 my-3"><MusicCard trackName={songInfo.name} artists={songInfo.artists} album={songInfo.album} /></li>

@@ -1,25 +1,17 @@
 'use client'
 
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 
-export const NavigationBar = () => (
-    <Navbar shouldHideOnScroll isBordered>
+export const NavigationBar = () => {
+  const router = useRouter();
+    return <Navbar shouldHideOnScroll isBordered>
       <NavbarBrand>
       <Link className="font-bold text-inherit" href="/">ZBISH</Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="start">
-        <NavbarItem>
-          <Link color="foreground" href="/gaming">
-            Gaming
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="/music-niche">
-            Music Niche
-          </Link>
-        </NavbarItem>
-        <Dropdown>
+      <Dropdown>
             <DropdownTrigger>
               <Button
                 disableRipple
@@ -29,22 +21,23 @@ export const NavigationBar = () => (
               </Button>
             </DropdownTrigger>
           <DropdownMenu
-            className="w-[340px]"
+          onAction={(key) => router.push(`/${key}`)}
             itemClasses={{
               base: "gap-4",
             }}
           >
-            <DropdownItem key="gaming">
-              <Link href="/gaming">Gaming</Link>
-            </DropdownItem>
-            <DropdownItem key="music">
-              <Link href="/music">Music</Link>
-            </DropdownItem>
-            <DropdownItem key="art">
-              <Link href="/art">Art</Link>
-            </DropdownItem>
+            <DropdownItem key="">Home</DropdownItem>
+            <DropdownItem key="gaming" className="text-white font-large font-semibold">Gaming</DropdownItem>
+            <DropdownItem key="music" className="text-white font-large font-semibold">Music</DropdownItem>
+            <DropdownItem key="art" className="text-white font-large font-semibold">Art</DropdownItem>
           </DropdownMenu>
         </Dropdown>
+        <NavbarItem>
+          <Link color="foreground" href="/music-niche">
+            Music Niche
+          </Link>
+        </NavbarItem>
+        
       </NavbarContent>
     </Navbar>
-);
+};
