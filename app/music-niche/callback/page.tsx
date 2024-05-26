@@ -56,13 +56,14 @@ export default async function Page({searchParams}: {searchParams: { [key: string
             <RadialMeter value={analysisAverages.acousticness * 100} title="Acousticness"></RadialMeter>
             <RadialMeter value={analysisAverages.speechiness * 100} title="Speechiness"></RadialMeter>
         </div>
+        <h1 className="text-3xl font-bold tracking-wide text-center my-4 mt-6">Genres from your top artists</h1>
         <GenreChips genres={topGenres}></GenreChips>
         
-        <h1 className="text-3xl font-bold tracking-wide text-center my-4 mt-6"> Your Top Songs</h1>
+        <h1 className="text-3xl font-bold tracking-wide text-center my-4 mt-6">Your Top Songs</h1>
 
 
 
-        <ul className="grid gap-0 grid-cols-4 items-start grid-flow-dense">
+        <ul className="grid gap-0 grid-cols-6 items-start grid-flow-dense">
             {topSongs.map((songInfo: spotifySongItem) => (
                 <li key={songInfo.id} className="mx-3 my-3"><MusicCard trackName={songInfo.name} artists={songInfo.artists} album={songInfo.album} /></li>
             ))}
@@ -98,7 +99,7 @@ async function getAccessToken(code: string | undefined) {
 }
 
 export async function getTopSongs(accessToken: string, timeRange: string) {
-    const response = await fetch(`https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}`, {
+    const response = await fetch(`https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}&limit=30`, {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': 'Bearer ' + `${accessToken}`
