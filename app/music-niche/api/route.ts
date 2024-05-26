@@ -11,7 +11,7 @@ const generateRandomString = (length: number) => {
 export async function GET(request: Request) {
     const clientId = process.env.SPOTIFY_CLIENT_ID
     const scope = 'user-read-private user-read-email user-top-read'
-    const redirectUri = 'http://localhost:3000/music-niche/callback'
+    const redirectUri = `${process.env.REDIRECT_URI}/music-niche/callback`
     const state = generateRandomString(16);
 
     const queryParams = new URLSearchParams({

@@ -78,7 +78,7 @@ async function getAccessToken(code: string | undefined) {
         body: new URLSearchParams({
         grant_type: 'authorization_code',
         code: code as string,
-        redirect_uri: 'http://localhost:3000/music-niche/callback',
+        redirect_uri: `${process.env.REDIRECT_URI}/music-niche/callback`,
         }),
     });
 
