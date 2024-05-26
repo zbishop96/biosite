@@ -21,7 +21,6 @@ export async function GET(request: Request) {
         redirect_uri: redirectUri,
         state: state
     })
-    const res = redirect('https://accounts.spotify.com/authorize?' + queryParams.toString())
-    
-    return new Response('redirecting to Spotify', {status: 200})
+    console.log(queryParams)
+    redirect('https://accounts.spotify.com/authorize?' + queryParams.toString())
   }
