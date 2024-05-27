@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation'
 import GenreChips from "../GenreChips";
 import MusicCard from "../MusicCard";
 import RadialMeter from "../RadialMeter";
@@ -85,7 +86,6 @@ async function getAccessToken(code: string | undefined) {
     if (!response.ok) {
         throw new Error('Failed to fetch access token');
     }
-
     const data = await response.json();
     const accessToken = data.access_token;
     const expiresIn = data.expires_in;
@@ -101,7 +101,9 @@ async function getTopSongs(accessToken: string, timeRange: string) {
             'Authorization': 'Bearer ' + `${accessToken}`
         }
     })
-
+    if (response.status != 200) {
+        redirect('/music-niche/error')
+    }
     const data = await response.json();
     return data.items;
 }
@@ -126,7 +128,6 @@ async function getSongMetrics(songs: spotifySongItem[], accessToken: string) {
                 'Authorization': 'Bearer ' + `${accessToken}`
             }
         })
-
         const data = await response.json();
         duration_ms += data.duration_ms;
         energy += data.energy;
@@ -165,7 +166,7 @@ async function getArtistTopGenres(accessToken: string) {
             'Authorization': 'Bearer ' + `${accessToken}`
         }
     })
-
+    console.log(response)
     const data = await response.json();
     data.items.forEach((artist: {genres: string[]}) => {
         artist.genres.forEach((genre: string) => {
