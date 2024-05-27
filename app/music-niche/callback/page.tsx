@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import GenreChips from "../GenreChips";
 import MusicCard from "../MusicCard";
 import RadialMeter from "../RadialMeter";
+import { Image } from '@nextui-org/react';
 
 export interface spotifySongItem {
     name: string,
@@ -12,7 +13,10 @@ export interface spotifySongItem {
 
 export interface spotifyAlbumItem {
     images: spotifyImageItem[],
-    name: string
+    name: string,
+    external_urls: {
+        spotify: string 
+    }
 }
 
 export interface spotifyImageItem {
@@ -49,6 +53,11 @@ export default async function Page({searchParams}: {searchParams: { [key: string
     const topGenres = await getArtistTopGenres(accessToken);
 
     return <div className="flex flex-col justify-center items-center">
+        <Image
+            src="/Spotify_Logo_RGB_Green.png"
+            width={400}
+            className='my-3'
+        />
         <h1 className="text-3xl font-bold tracking-wide text-center my-4"> Your Music's Attributes</h1>
         <div className="flex flex-nowrap gap-6">
             <RadialMeter value={analysisAverages.energy * 100} title="Energy"></RadialMeter>
