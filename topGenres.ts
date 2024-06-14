@@ -1,0 +1,1 @@
+export const topGenres = ["hip hop","rap","modern alternative rock","alternative hip hop","conscious hip hop","modern rock","brostep","modern hard rock","electro house","indie pop rap","pop rap","modern blues rock","rock","complextro","edm","dancefloor dnb","nyc rap","british alternative rock","pov: indie","abstract hip hop"]
