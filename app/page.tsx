@@ -67,7 +67,7 @@ export default function Home() {
           Initially, the codebase was heavily dependent on AWS Lambdas. As things scaled and modernized, it made more sense to transition many of the microservices
           to ECS where they were more readily available without cold-starts. In my time at TaxBit, I worked on some great projects including several built from scratch
           starting with some vague requirements. One of those projects was the FIRE file service. FIRE files are a specific format from the IRS that include all of the
-          required information to sumbit taxes for a set of users. This was a particularly complex project as the tax code is anything but simple. Adding on top of that,
+          required information to submit taxes for a set of users. This was a particularly complex project as the tax code is anything but simple. Adding on top of that,
           users are able to submit corrections to their taxes in which a new FIRE file has to be created as a diff of their previous transactions and the new correction.
         </p>
         <h2 className="text-large font-semibold text-orange-500 mt-2">Quantivate</h2>
