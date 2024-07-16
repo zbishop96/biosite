@@ -12,7 +12,7 @@ export default function Page() {
                         <h1 className="font-semibold text-xl">Sofles</h1>
                     </CardHeader>
                     <CardBody className="mx-3">
-                        <p className="max-w-[560px]">
+                        <p className="max-w-[620px]">
                             I was first introduced to Sofles through an incredible timelapse of a huge project posted by Ironlak.
                             This video shows Sofles absolutely covering a warehouse with massive murals and street art. That was
                              11 years ago, and he hasn't stopped producing some of the most impressive work I've seen since. You
@@ -46,7 +46,34 @@ export default function Page() {
                                 height={300}
                             />
                             <Image
-                                src="https://scontent.cdninstagram.com/v/t39.30808-6/434039563_18429092491034882_5607825447157887777_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE0NDAuc2RyLmYzMDgwOCJ9&_nc_ht=scontent.cdninstagram.com&_nc_cat=102&_nc_ohc=khhkQJfZPAoQ7kNvgGEqCgW&edm=APs17CUAAAAA&ccb=7-5&ig_cache_key=MzMzMjI1NDc2NzA2NzE2ODY4NQ%3D%3D.2-ccb7-5&oh=00_AYBsRSPZuBeJds0Pq-PlRIssTjsRrpI4uJ4g4Xrj7WHsiw&oe=665F5126&_nc_sid=10d13b"
+                                src="https://digitaldoes.com/cdn/shop/files/DSC07538_kopie.jpg?crop=center&height=2400&v=1695142823&width=1600"
+                                width={200}
+                                height={300}
+                            />
+                        </div>
+  
+                        </CardBody>
+                </Card>
+                <Card className="shadow mx-3 my-3 w-fit h-fit">
+                    <CardHeader className="pb-0 pt-2 mx-3 items-start">
+                        <h1 className="font-semibold text-xl">Blacktail Studios</h1>
+                    </CardHeader>
+                    <CardBody className="mx-3">
+                        <p className="max-w-[620px]">
+                        Blacktail Studio is a wood worker who builds high end furniture, mostly tables. He often takes creative risks and tries things that he doesn't know if they will even work.
+                        He started the channel build epoxy resin river tables with live edge slabs but has branched out into some wild projects such as a damascus steel style table made from denim.
+                        You can see his work on <Link href={'https://www.youtube.com/@BlacktailStudio'} className="font-semibold text-blue-400">
+                            youtube channel
+                            </Link>. He also has a website (<Link href={'https://www.blacktailstudio.com/'} className="font-semibold text-blue-400">https://www.blacktailstudio.com/</Link>) that breaks down the different projects and shows he's been a part of.
+                        </p>
+                        <div className="flex gap-[10px]">
+                            <Image
+                                src="https://images.squarespace-cdn.com/content/v1/5950165c86e6c024428ff886/60bbbfed-da93-4ed8-9e0a-2e7bb4fae061/How+to+build+an+epoxy+table+Blacktail+Studio.png?format=1500w"
+                                width={300}
+                                height={300}
+                            />
+                            <Image
+                                src="https://images.squarespace-cdn.com/content/v1/5950165c86e6c024428ff886/48ba237a-f35f-4984-af82-a2beb3fcdc50/11+Damascus+Denim+Final+C.png?format=2500w"
                                 width={300}
                                 height={300}
                             />

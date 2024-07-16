@@ -48,7 +48,7 @@ export default async function Page({searchParams}: {searchParams: { [key: string
     const code = searchParams['code'];
     const accessToken = await getAccessToken(code as string);
     
-    const topSongs = await getTopSongs(accessToken, 'medium_term');
+    const topSongs = await getTopSongs(accessToken, 'short_term');
     const analysisAverages = await getSongMetrics(topSongs, accessToken);
     const topGenres = await getArtistTopGenres(accessToken);
 

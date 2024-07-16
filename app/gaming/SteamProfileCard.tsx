@@ -24,7 +24,7 @@ export default async function SteamProfileCard() {
 }
 
 async function getProfileData() {
-    const response = await fetch(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${process.env.STEAM_API_KEY}&steamids=${process.env.STEAM_PROFILE_ID}`, { next: { revalidate: 120 }})
+    const response = await fetch(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${process.env.STEAM_API_KEY}&steamids=${process.env.STEAM_PROFILE_ID}`, { next: { revalidate: 20 }})
   
     const data = await response.json()
     return data.response.players[0]
