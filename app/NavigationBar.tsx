@@ -10,7 +10,7 @@ export const NavigationBar = () => {
       <NavbarBrand>
       <Link className="font-bold text-inherit" href="/">ZBISH</Link>
       </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="start">
+      <NavbarContent className="sm:flex gap-4" justify="start">
       <Dropdown>
             <DropdownTrigger>
               <Button
