@@ -3,20 +3,17 @@ import { Card, CardHeader, CardBody, Image } from "@nextui-org/react"
 export default async function SteamProfileCard() {
 
   const profileData = await getProfileData()
-  return <Card className="shadow max-w-96 min-w-36 mx-3 my-3">
-    <CardHeader className="pb-0 pt-2 px-3 items-start">
-    </CardHeader>
-    <CardBody className="overflow-visible flex-row gap-4 py-3 px-3 items-end">
+  return <Card className="shadow">
+    <CardBody className="overflow-visible flex-row gap-3 items-end">
         <Image
           alt="Card background"
-          className="object-cover"
+          className="object-cover max-h-12 shadow md:max-h-24"
           src={profileData.avatarmedium}
-          width={64}
-          height={64}
           isBlurred
         />
         <div className="flex-col">
-            <h1 className="text-large align-bottom font-bold line-clamp-1">{profileData.gameid === undefined ? `Not currently playing` : `Currently playing ${profileData.gameextrainfo}`}</h1>
+            <h1 className="text-large font-bold line-clamp-1">Alfie Solomons</h1>
+            <h1 className="text-base font-semibold line-clamp-1">{profileData.gameid === undefined ? `Not currently playing` : `Currently playing ${profileData.gameextrainfo}`}</h1>
         </div>
       </CardBody>
     </Card>
