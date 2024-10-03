@@ -1,8 +1,7 @@
 
 'use client'
 
-import ThreeScene from '../components/ThreeScene';
-import MyScene from '../components/myScene';
+import MyScene from '../components/ThreeScene';
 
 
 const HomePage = () => {
