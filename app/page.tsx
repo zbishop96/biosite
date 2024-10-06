@@ -106,7 +106,7 @@ export default function Home() {
     I'm not personally an artist but I've definitely curated a specific taste. I've gotten into street art but I distinctly seperate that from graffiti or tagging.
     I like big loud murals and strong colors in art. My favorite street artists are Sofles out of Australia and Digital Does out of the Netherlands. Both of them
     have very distinct and striking styles that really pop in my opinion. If you're anything like me, you might like some of the artists / art over on the
-    <Link href={"/gaming"} className="font-semibold text-blue-400"> art page.</Link>
+    <Link href={"/art"} className="font-semibold text-blue-400"> art page.</Link>
   </p>
   <h2 className="font-semibold mx-4 mt-4">Music</h2>
   <p className="mx-4">

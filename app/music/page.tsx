@@ -12,17 +12,18 @@ export default function Page() {
   const mySongs = JSON.parse(topSongs)
 
   return <div className="flex flex-col justify-center items-center">
-    <h1 className="text-3xl font-bold tracking-wide text-center my-4 mt-6">My Results from the Music Niche App</h1>
-        <div className="flex flex-nowrap gap-6">
+    <h1 className="text-xl lg:text-3xl font-bold tracking-wide text-center my-4 mt-6">My Results from the Music Niche App</h1>
+        <div className="flex md:flex-nowrap flex-wrap justify-center gap-3">
           <RadialMeter value={analysisAverages.energy * 100} title="Energy"></RadialMeter>
           <RadialMeter value={analysisAverages.danceability * 100} title="Danceability"></RadialMeter>
           <RadialMeter value={analysisAverages.valence * 100} title="Valence"></RadialMeter>
           <RadialMeter value={analysisAverages.acousticness * 100} title="Acousticness"></RadialMeter>
           <RadialMeter value={analysisAverages.speechiness * 100} title="Speechiness"></RadialMeter>
       </div>
+      <h1 className="text-xl lg:text-3xl font-bold tracking-wide text-center my-4 mt-6">Genres from my top artists</h1>
       <GenreChips genres={topGenres}></GenreChips>
-      <h1 className="text-3xl font-bold tracking-wide text-center my-4 mt-6">My Top Songs</h1>
-      <ul className="grid gap-0 grid-cols-6 items-start grid-flow-dense">
+      <h1 className="text-xl lg:text-3xl font-bold tracking-wide text-center my-4 mt-6">My Top Songs</h1>
+      <ul className="grid gap-0 grid-cols-2 md:grid-cols-4 lg:grid-cols-6 items-start grid-flow-dense lg:mx-16">
         {mySongs.map((songInfo: spotifySongItem) => (
             <li key={songInfo.id} className="mx-3 my-3"><MusicCard trackName={songInfo.name} artists={songInfo.artists} album={songInfo.album} /></li>
         ))}

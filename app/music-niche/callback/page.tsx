@@ -48,28 +48,28 @@ export default async function Page({searchParams}: {searchParams: { [key: string
     const code = searchParams['code'];
     const accessToken = await getAccessToken(code as string);
     
-    const topSongs = await getTopSongs(accessToken, 'short_term');
+    const topSongs = await getTopSongs(accessToken, 'medium_term');
     const analysisAverages = await getSongMetrics(topSongs, accessToken);
     const topGenres = await getArtistTopGenres(accessToken);
+
 
     return <div className="flex flex-col justify-center items-center">
         <Image
             src="/Spotify_Logo_RGB_Green.png"
-            width={400}
-            className='my-3'
+            className='my-3 mx-3 max-w-80 md:max-w-96'
         />
-        <h1 className="text-3xl font-bold tracking-wide text-center my-4"> Your Music's Attributes</h1>
-        <div className="flex flex-nowrap gap-6">
+        <h1 className="text-xl font-bold tracking-wide text-center my-2"> Your Music's Attributes</h1>
+        <div className="flex md:flex-nowrap flex-wrap justify-center gap-3">
             <RadialMeter value={analysisAverages.energy * 100} title="Energy"></RadialMeter>
             <RadialMeter value={analysisAverages.danceability * 100} title="Danceability"></RadialMeter>
             <RadialMeter value={analysisAverages.valence * 100} title="Valence"></RadialMeter>
             <RadialMeter value={analysisAverages.acousticness * 100} title="Acousticness"></RadialMeter>
             <RadialMeter value={analysisAverages.speechiness * 100} title="Speechiness"></RadialMeter>
         </div>
-        <h1 className="text-3xl font-bold tracking-wide text-center my-4 mt-6">Genres from your top artists</h1>
+        <h1 className="text-xl lg:text-3xl font-bold tracking-wide text-center my-4 mt-6">Genres from your top artists</h1>
         <GenreChips genres={topGenres}></GenreChips>
-        <h1 className="text-3xl font-bold tracking-wide text-center my-4 mt-6">Your Top Songs</h1>
-        <ul className="grid gap-0 grid-cols-6 items-start grid-flow-dense">
+        <h1 className="text-xl lg:text-3xl font-bold tracking-wide text-center my-4 mt-6">Your Top Songs</h1>
+        <ul className="grid gap-0 grid-cols-2 md:grid-cols-4 lg:grid-cols-6 items-start grid-flow-dense lg:mx-16">
             {topSongs.map((songInfo: spotifySongItem) => (
                 <li key={songInfo.id} className="mx-3 my-3"><MusicCard trackName={songInfo.name} artists={songInfo.artists} album={songInfo.album} /></li>
             ))}
@@ -175,7 +175,6 @@ async function getArtistTopGenres(accessToken: string) {
             'Authorization': 'Bearer ' + `${accessToken}`
         }
     })
-    console.log(response)
     const data = await response.json();
     data.items.forEach((artist: {genres: string[]}) => {
         artist.genres.forEach((genre: string) => {
@@ -189,5 +188,5 @@ async function getArtistTopGenres(accessToken: string) {
     });
 
     const genresDescending = new Map(Array.from(genreMap.entries()).sort((a, b) => b[1] - a[1]));
-    return Array.from(genresDescending.keys()).slice(0,20);
+    return Array.from(genresDescending.keys()).slice(0,30);
 }

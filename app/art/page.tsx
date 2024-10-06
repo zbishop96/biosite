@@ -15,7 +15,7 @@ export default function Page() {
                             11 years ago, and he hasn't stopped producing some of the most impressive work I've seen since. You
                             can see more on his instagram <Link href={'https://www.instagram.com/sofles'} className="text-blue-400 font-semibold">here</Link>.
                     </p>
-                    <iframe className="m-2" src="https://www.youtube.com/embed/Pv-Do30-P8A?si=mGreLs87chttK4L5" title="YouTube video player" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                    <iframe className="m-2 md:min-h-80" src="https://www.youtube.com/embed/Pv-Do30-P8A?si=mGreLs87chttK4L5" title="YouTube video player" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                 </CardBody>
             </Card>
             <Card className="shadow mx-3 my-3 col-span-2 col-start-2">
