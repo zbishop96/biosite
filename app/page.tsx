@@ -2,8 +2,8 @@ import { Button, Chip, Image } from "@nextui-org/react"
 import Link from "next/link"
 
 export default function Home() {
-  return <div className="">
-  <div className="mt-5 md:flex md:max-w-[80%] md:justify-center">
+  return <div className="flex justify-center">
+  <div className="mt-5 md:flex md:max-w-[80%] xl:max-w-[60%] md:justify-center">
     <div className="flex flex-col m-3 gap-3">
       <div className="self-center max-w-96">
         <Image

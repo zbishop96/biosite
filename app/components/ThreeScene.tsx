@@ -22,7 +22,7 @@ const Model = () => {
   );
 };
 
-const ClickableCanvas = () => {
+const ClickableCanvas = ({ onClick }: { onClick: () => void }) => {
   const { camera } = useThree();
   const raycaster = new THREE.Raycaster();
   const mouse = new THREE.Vector2();
@@ -45,18 +45,15 @@ const ClickableCanvas = () => {
       if (clickedObject.name === 'Material2001'  || clickedObject.name === 'Material2004' || clickedObject.name === 'Material2') {
         setLookAtTarget(new THREE.Vector3(-0.1, -0.1, 0.00))
         setTargetPosition(new THREE.Vector3(4, 1, -2));
-        // setLookAtTarget(new THREE.Vector3(0, 0, 0));
       } else if (clickedObject.name === 'defaultMaterial003'  || clickedObject.name === 'defaultMaterial001') {
         setLookAtTarget(new THREE.Vector3(0.00, 0.6, 0.00))
         setTargetPosition(new THREE.Vector3(-3.3, .55, -1.6));
-        // setLookAtTarget(new THREE.Vector3(0, 0, 0));
       } else {
         setLookAtTarget(new THREE.Vector3(-0.15, 0.00, 0.00))
         setTargetPosition(new THREE.Vector3(0, 3, 9));
-        // setLookAtTarget(new THREE.Vector3(0, 0, 0));
       }
-      
 
+      onClick()
     }
   };
 
@@ -82,15 +79,40 @@ const ClickableCanvas = () => {
 };
 
 const Scene = () => {
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  const handleCanvasClick = () => {
+    setShowOverlay(!showOverlay); // Show the overlay on click
+  };
+
   return (
-    <Canvas style={{ position: 'absolute', top: 0, left: 0 }}>
-      <ambientLight intensity={0.3} />
-      <pointLight position={[-1, 3, -1]} intensity={40} decay={2.3} />
-      <pointLight position={[-1, 1, -1]} intensity={10} decay={1.7} />
-      <PerspectiveCamera makeDefault position={[0, 3, 9]} rotation={[Math.PI / -12, 0, 0]} />
-      
-      <ClickableCanvas />
-    </Canvas>
+    <div>
+      <Canvas style={{ position: 'absolute', top: 0, left: 0 }}>
+        <ambientLight intensity={0.3} />
+        <pointLight position={[-1, 3, -1]} intensity={40} decay={2.3} />
+        <pointLight position={[-1, 1, -1]} intensity={10} decay={1.7} />
+        <PerspectiveCamera makeDefault position={[0, 3, 9]} rotation={[Math.PI / -12, 0, 0]} />
+        
+        <ClickableCanvas onClick={handleCanvasClick} />
+      </Canvas>
+
+      {showOverlay && (
+        <div style={{
+          position: 'absolute',
+          top: 120,
+          left: 120,
+          color: 'white',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          padding: '10px',
+          borderRadius: '5px',
+          pointerEvents: 'none' // Prevent interference with the canvas
+        }}>
+          <h1>Overlay Title</h1>
+          <p>This is some overlay content.</p>
+          <button onClick={() => setShowOverlay(false)}>Close</button> {/* Button to close overlay */}
+        </div>
+      )}
+    </div>
   );
 };
 
