@@ -2,9 +2,9 @@ import Anthropic from '@anthropic-ai/sdk';
 
 import { NextRequest, NextResponse } from 'next/server';
 
-// Define the POST handler for the API route
+export const maxDuration = 20;
 export const POST = async (req: NextRequest) => {
-  const data = await req.json(); // Parse the JSON body from the request
+  const data = await req.json();
   const result = await processImage(data.image, data.fileType);
   return NextResponse.json({ message: result, data, status: 200 });
 };

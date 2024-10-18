@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { Button } from "@nextui-org/react";
+import { Button, Spinner } from "@nextui-org/react";
 
 const ImageUpload: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [responseMessage, setResponseMessage] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -22,6 +23,7 @@ const ImageUpload: React.FC = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
+    setIsLoading(true)
     e.preventDefault();
     if (!file) {
       alert('Please select a file first');
@@ -42,6 +44,7 @@ const ImageUpload: React.FC = () => {
       const data = await res.json();
       console.log(data.message.text);
       setResponseMessage(data.message.text);
+      setIsLoading(false)
     } catch (error) {
       console.error('Error:', error);
       setResponseMessage('File upload failed');
@@ -56,23 +59,22 @@ const ImageUpload: React.FC = () => {
             type="file"
             ref={fileInputRef}
             onChange={handleFileChange}
-            style={{ display: 'none' }} // Hide the default input
+            style={{ display: 'none' }}
           />
           <Button 
             className='bg-gradient-to-tl from-sky-500 to-blue-800 font-semibold text-lg max-w-80' 
             onClick={handleFileSelect}
           >
-            Add Picture
+            {file ? 'Picture Added' : 'Add Picture'}
           </Button>
           <Button 
             className='bg-gradient-to-tl from-sky-500 to-blue-800 font-semibold text-lg max-w-80' 
             type="submit" 
-            disabled={!file} // Disable the button until a file is selected
+            disabled={!file || isLoading}
           >
-            Get Roasted!
+            {isLoading ? <Spinner color='default' size="md" /> : "Get Roasted!"}
           </Button>
         </form>
-        
       </div>
       <div className='flex justify-center'>
        {responseMessage && <p className='text-center p-8'>{responseMessage}</p>}
