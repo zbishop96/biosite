@@ -33,8 +33,18 @@ export const NavigationBar = () => {
           </DropdownMenu>
         </Dropdown>
         <NavbarItem>
+          <Link color="foreground" href="/projects">
+            Projects
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
           <Link color="foreground" href="/music-niche">
             Music Niche
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="/costumeRoast">
+            Costume Roast
           </Link>
         </NavbarItem>
         

@@ -96,6 +96,7 @@ async function getAccessToken(code: string | undefined) {
         throw new Error('Failed to fetch access token');
     }
     const data = await response.json();
+
     const accessToken = data.access_token;
     const expiresIn = data.expires_in;
     const refreshToken = data.refresh_token;
