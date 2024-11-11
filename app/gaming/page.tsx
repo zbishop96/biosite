@@ -27,6 +27,5 @@ export default async function Page() {
 async function getRecentGames() {
   const response = await fetch(`https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${process.env.STEAM_API_KEY}&steamid=${process.env.STEAM_PROFILE_ID}&format=json` , { next: { revalidate: 3600 }})
     const data = await response.json();
-    console.log(data.response)
     return data.response.games;
 }

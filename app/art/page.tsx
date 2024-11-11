@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Page() {
     return <div className="flex justify-center">
-        <div className="md:grid grid-cols-3 lg:max-w-[80%] xl-max-w-[60%] ">
-            <Card className="shadow my-3 mx-3 col-span-2">
+        <div className="md:grid grid-cols-3 lg:max-w-[80%] xl:max-w-[50%]">
+            <Card className="shadow my-3 mx-3 col-span-2 max-w-[600px]">
                 <CardHeader className="pb-0 items-start">
                     <h1 className="font-semibold text-xl">Sofles</h1>
                 </CardHeader>
@@ -15,10 +15,10 @@ export default function Page() {
                             11 years ago, and he hasn't stopped producing some of the most impressive work I've seen since. You
                             can see more on his instagram <Link href={'https://www.instagram.com/sofles'} className="text-blue-400 font-semibold">here</Link>.
                     </p>
-                    <iframe className="m-2 md:min-h-80" src="https://www.youtube.com/embed/Pv-Do30-P8A?si=mGreLs87chttK4L5" title="YouTube video player" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                    <iframe className="m-2 md:min-h-80 pt-2" src="https://www.youtube.com/embed/Pv-Do30-P8A?si=mGreLs87chttK4L5" title="YouTube video player" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                 </CardBody>
             </Card>
-            <Card className="shadow mx-3 my-3 col-span-2 col-start-2">
+            <Card className="shadow mx-3 my-3 col-span-2 col-start-2 max-w-[650px]">
                 <CardHeader className="pb-0 pt-2 items-start">
                     <h1 className="font-semibold text-xl">Digital Does</h1>
                 </CardHeader>
@@ -33,7 +33,7 @@ export default function Page() {
                         Instagram
                         </Link>. He also has a website (<Link href={'https://digitaldoes.com/'} className="font-semibold text-blue-400">https://digitaldoes.com/</Link>) that breaks down the different projects and shows he's been a part of.
                     </p>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 pt-2">
                         <Image
                             src="https://digitaldoes.com/cdn/shop/files/lrGraffiti_art_DOES_Mexico_City_copy.jpg"
                             className="shrink max-h-96"
@@ -45,7 +45,7 @@ export default function Page() {
                     </div>
                     </CardBody>
             </Card>
-            <Card className="shadow w-fit h-fit col-span-2">
+            <Card className="shadow my-3 mx-3 col-span-2">
                 <CardHeader className="pb-0 pt-2 items-start">
                     <h1 className="font-semibold text-xl">Blacktail Studios</h1>
                 </CardHeader>
@@ -57,7 +57,7 @@ export default function Page() {
                         youtube channel
                         </Link>. He also has a website (<Link href={'https://www.blacktailstudio.com/'} className="font-semibold text-blue-400">https://www.blacktailstudio.com/</Link>) that breaks down his projects and hosts his courses.
                     </p>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 pt-2">
                         <Image
                             src="https://images.squarespace-cdn.com/content/v1/5950165c86e6c024428ff886/60bbbfed-da93-4ed8-9e0a-2e7bb4fae061/How+to+build+an+epoxy+table+Blacktail+Studio.png?format=1500w"
                             className="shrink max-h-96"
@@ -71,7 +71,30 @@ export default function Page() {
 
                     </CardBody>
             </Card>
+            <Card className="shadow my-3 mx-3 col-span-2 col-start-2 max-w-[700px]">
+                <CardHeader className="pb-0 pt-2 items-start">
+                    <h1 className="font-semibold text-xl">Bond Truluv</h1>
+                </CardHeader>
+                <CardBody>
+                    <p>
+                    Bond is a street artist and muralist who experiments with unique spray caps and tools. His style is clean sharp lines often in a 3d perspective. 
+                    You can read more about him <Link href={'https://truluv.de/about/'} className="font-semibold text-blue-400"> on his site</Link>. He shows the unique
+                     spray caps and his process on his <Link href={'https://www.instagram.com/bondtruluv/'} className="font-semibold text-blue-400">instagram page</Link>.
+                    </p>
+                    <div className="flex gap-2 pt-2">
+                        <Image
+                            src="/BondTruluv_Chemnitz_2024_2_709x856.jpg"
+                            className="shrink max-h-96"
+                        />
+                        <Image
+                            src="/Spraygluv_BG.jpg"
+                            className="shrink max-h-96"
 
+                        />
+                    </div>
+
+                    </CardBody>
+            </Card>
         </div>
     </div>
   }

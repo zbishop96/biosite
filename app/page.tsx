@@ -111,9 +111,8 @@ export default function Home() {
   <h2 className="font-semibold mx-4 mt-4">Music</h2>
   <p className="mx-4">
     If I'm not talking to someone, I'm probably listening to music. I like to think I've got pretty broad tastes and can enjoy a large range of music. My favorite genres are
-    hip hop, rock, and edm. I love going to concerts and have had the opportunity to see some great artists recently! The next big music event for me is the When We Were Young
-    festival in October this year. If you want to see a bit more about what I've been listening to, check out the
-    <Link href={"/music"} className="font-semibold text-blue-400"> Music Page</Link>.
+    hip hop, rock, and edm. I love going to concerts and have had the opportunity to see some great artists recently! If you want to see a bit more about what I've been listening to, check out the
+    about me <Link href={"/music"} className="font-semibold text-blue-400"> Music Page</Link>.
     Alternatively, get better insight into your own music tastes with
     <Link href={"/music-niche"} className="font-semibold text-blue-400"> Music Niche</Link>
     , a project of mine that leverages the Spotify API to gather data about your listening habits.

@@ -2,6 +2,7 @@ import { Canvas, useFrame, useThree, ThreeEvent } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 import { useGLTF, PerspectiveCamera, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
+import MusicNicheOverlay from './musicNicheOverlay';
 
 const Model = () => {
   const { scene } = useGLTF('/halfpipeExtras.glb');
@@ -99,17 +100,16 @@ const Scene = () => {
       {showOverlay && (
         <div style={{
           position: 'absolute',
-          top: 120,
-          left: 120,
+          top: 130,
+          left: 130,
           color: 'white',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          backgroundColor: 'rgba(0, 0, 0, 0.0)',
           padding: '10px',
           borderRadius: '5px',
-          pointerEvents: 'none' // Prevent interference with the canvas
+          pointerEvents: 'none'
         }}>
-          <h1>Overlay Title</h1>
-          <p>This is some overlay content.</p>
-          <button onClick={() => setShowOverlay(false)}>Close</button> {/* Button to close overlay */}
+          <MusicNicheOverlay/>
+          <button onClick={() => setShowOverlay(false)}>Close</button>
         </div>
       )}
     </div>
